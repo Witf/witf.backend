@@ -13,6 +13,9 @@
       "launchBrowser": true,
       "launchUrl": "https://localhost:44385/",
       "environmentVariables": {
+        "WITF_SQL_DEFAULT_CONNECTION": "Server=tcp:witf.database.windows.net,1433;Initial Catalog=witf-test;Persist Security Info=False;User ID=adm;Password=mu7aMUsuwEPusTuswA_a-EWr;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+        "AuthenticationFacebookAppId": "771527876334692",
+        "AuthenticationFacebookAppSecret": "c291860acc7f527de8fbe7abb7d4d664",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
