@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,8 @@ using Microsoft.Extensions.Logging;
 using witf.backend.Data;
 using witf.backend.Models;
 using witf.backend.Services;
+using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace witf.backend
 {
@@ -40,9 +44,10 @@ namespace witf.backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var conStr = Configuration["ConnectionStrings:defaultConnection"];
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["WITF_SQL_DEFAULT_CONNECTION"]));
+                options.UseSqlServer(conStr));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -73,6 +78,11 @@ namespace witf.backend
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
                 //app.UseBrowserLink();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true,
+                    ReactHotModuleReplacement = true
+                });
             }
             else
             {
@@ -90,6 +100,27 @@ namespace witf.backend
                 AppId = Configuration["AuthenticationFacebookAppId"],
                 AppSecret = Configuration["AuthenticationFacebookAppSecret"]
             });
+            app.Use(async (ctx, next) =>
+            {
+                var path = ctx.Request.Path.ToString();
+                const string apiEndpoint = "/api/search/";
+                if (path.StartsWith(apiEndpoint)) {
+
+                }
+                if (!path.StartsWith(apiEndpoint))
+                    await next();
+                else
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        var newUrl = Configuration["SearchApiUrl"] + path.Replace(apiEndpoint, "");
+                        var response = await httpClient.GetAsync(newUrl);
+                        var result = await response.Content.ReadAsStringAsync();
+                        ctx.Response.StatusCode = (int)response.StatusCode;
+                        await ctx.Response.WriteAsync(result);
+                    }
+                }
+            });
 
             app.UseMvc(routes =>
             {
@@ -98,5 +129,7 @@ namespace witf.backend
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
     }
 }
