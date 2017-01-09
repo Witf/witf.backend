@@ -8,6 +8,7 @@ const unloadedState: IRecipeSearchsState = {
 };
 
 export const recipeSearchReducer: Reducer<IRecipeSearchsState> = (state, action) => {
+
     if (isActionType(action, Actions.QueryRecipesAction)) {
         return {
             suggestions: state.suggestions,
@@ -16,6 +17,8 @@ export const recipeSearchReducer: Reducer<IRecipeSearchsState> = (state, action)
             queryResults: state.queryResults
         };
     }
+
+
     if (isActionType(action, Actions.RecievedRecipiQueryAction)) {
         return {
             suggestions: state.suggestions,

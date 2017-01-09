@@ -104,16 +104,15 @@ namespace witf.backend
             {
                 var path = ctx.Request.Path.ToString();
                 const string apiEndpoint = "/api/search/";
-                if (path.StartsWith(apiEndpoint)) {
-
-                }
-                if (!path.StartsWith(apiEndpoint))
+                if (!path.StartsWith(apiEndpoint)) {
                     await next();
+                }
                 else
                 {
                     using (var httpClient = new HttpClient())
                     {
-                        var newUrl = Configuration["SearchApiUrl"] + path.Replace(apiEndpoint, "");
+                        var appHbEndpoint = Configuration["SearchApiUrl"];
+                        var newUrl = Configuration["SearchApiUrl"] + path.Replace(apiEndpoint, "") + ctx.Request.QueryString;
                         var response = await httpClient.GetAsync(newUrl);
                         var result = await response.Content.ReadAsStringAsync();
                         ctx.Response.StatusCode = (int)response.StatusCode;
