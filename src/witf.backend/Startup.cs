@@ -100,6 +100,11 @@ namespace witf.backend
                 AppId = Configuration["AuthenticationFacebookAppId"],
                 AppSecret = Configuration["AuthenticationFacebookAppSecret"]
             });
+            app.UseGoogleAuthentication(new GoogleOptions
+            {
+                ClientId = Configuration["AuthenticationGoogleClientId"],
+                ClientSecret = Configuration["AuthenticationGoogleClientSecret"]
+            });
             app.Use(async (ctx, next) =>
             {
                 var path = ctx.Request.Path.ToString();
