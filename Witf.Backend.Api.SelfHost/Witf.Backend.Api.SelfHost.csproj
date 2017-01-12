@@ -95,7 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Witf.Backend.Api\Witf.Backend.Api.csproj">
-      <Project>{bd66391c-897b-4f0a-bfd0-e8362012aeea}</Project>
+      <Project>{7a0d1d46-9535-4b91-b108-429046dedec1}</Project>
       <Name>Witf.Backend.Api</Name>
     </ProjectReference>
   </ItemGroup>
