@@ -88,6 +88,8 @@
     <Compile Include="Controllers\DiscoverRecipesController.cs" />
     <Compile Include="Infrastructure\Ioc\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Ioc\InstallControllers.cs" />
+    <Compile Include="Infrastructure\WebApi\AppBuilderExtensions.cs" />
+    <Compile Include="Infrastructure\WebApi\IdentityExtensions.cs" />
     <Compile Include="Infrastructure\WebApi\WindsorDependencyScope.cs" />
     <Compile Include="Infrastructure\WebApi\WindsorHttpDependencyResolver.cs" />
     <Compile Include="IProxySettings.cs" />
