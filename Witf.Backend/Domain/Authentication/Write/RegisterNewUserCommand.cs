@@ -1,4 +1,4 @@
-﻿namespace Witf.Backend.Domain.Authentication
+﻿namespace Witf.Backend.Domain.Authentication.Write
 {
     public class RegisterNewUserCommand
     {

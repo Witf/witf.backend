@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Witf.Backend.Infrastructure
+namespace Witf.Backend.Infrastructure.Commands
 {
     public class Execute
     {

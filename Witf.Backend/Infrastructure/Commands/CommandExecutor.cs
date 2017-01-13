@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Castle.Windsor;
 
-namespace Witf.Backend.Infrastructure
+namespace Witf.Backend.Infrastructure.Commands
 {
     public class CommandExecutor : ICommandExecutor
     {
