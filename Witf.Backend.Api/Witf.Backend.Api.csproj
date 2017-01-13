@@ -126,6 +126,8 @@
     <Compile Include="Controllers\DiscoverRecipesController.cs" />
     <Compile Include="Controllers\PingController.cs" />
     <Compile Include="Infrastructure\Ioc\Bootstrapper.cs" />
+    <Compile Include="Infrastructure\Ioc\InstallCommandHandlers.cs" />
+    <Compile Include="Infrastructure\Ioc\InstallCommandInfrastructure.cs" />
     <Compile Include="Infrastructure\Ioc\InstallControllers.cs" />
     <Compile Include="Infrastructure\WebApi\AppBuilderExtensions.cs" />
     <Compile Include="Infrastructure\WebApi\IdentityExtensions.cs" />
@@ -136,7 +138,12 @@
     <Compile Include="Startup.cs" />
     <Compile Include="WebApiConfig.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Witf.Backend\Witf.Backend.csproj">
+      <Project>{5BC39C80-C679-4674-898A-EEDED1EA8AC0}</Project>
+      <Name>Witf.Backend</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
