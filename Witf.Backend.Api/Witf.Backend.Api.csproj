@@ -123,6 +123,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\RegisterNewUserBody.cs" />
+    <Compile Include="Controllers\AutenticationController.cs" />
     <Compile Include="Controllers\DiscoverRecipesController.cs" />
     <Compile Include="Controllers\PingController.cs" />
     <Compile Include="Infrastructure\Ioc\Bootstrapper.cs" />
