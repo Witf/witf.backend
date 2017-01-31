@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Witf.Backend.Api.SelfHost",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Witf.Backend.Api", "Witf.Backend.Api\Witf.Backend.Api.csproj", "{7A0D1D46-9535-4B91-B108-429046DEDEC1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BF47C2F1-EA00-4C09-BA79-4BB7F5270377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Witf.Backend.UnitTests", "Witf.Backend.UnitTests\Witf.Backend.UnitTests.csproj", "{D6EFA63A-F517-4714-B39D-2A9F16241C69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{7A0D1D46-9535-4B91-B108-429046DEDEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A0D1D46-9535-4B91-B108-429046DEDEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A0D1D46-9535-4B91-B108-429046DEDEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6EFA63A-F517-4714-B39D-2A9F16241C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EFA63A-F517-4714-B39D-2A9F16241C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EFA63A-F517-4714-B39D-2A9F16241C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EFA63A-F517-4714-B39D-2A9F16241C69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6EFA63A-F517-4714-B39D-2A9F16241C69} = {BF47C2F1-EA00-4C09-BA79-4BB7F5270377}
 	EndGlobalSection
 EndGlobal

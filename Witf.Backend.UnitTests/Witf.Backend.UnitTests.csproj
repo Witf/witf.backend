@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5BC39C80-C679-4674-898A-EEDED1EA8AC0}</ProjectGuid>
+    <ProjectGuid>{D6EFA63A-F517-4714-B39D-2A9F16241C69}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Witf.Backend</RootNamespace>
-    <AssemblyName>Witf.Backend</AssemblyName>
+    <RootNamespace>Witf.Backend.UnitTests</RootNamespace>
+    <AssemblyName>Witf.Backend.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,12 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,21 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Authentication\Write\RegisterNewUserCommand.cs" />
-    <Compile Include="Domain\Authentication\Write\RegisterNewUserCommandHandler.cs" />
-    <Compile Include="Infrastructure\Commands\CommandExecutor.cs" />
-    <Compile Include="Infrastructure\Commands\Execute.cs" />
-    <Compile Include="Infrastructure\Commands\ICommandExecutor.cs" />
-    <Compile Include="Infrastructure\Commands\ICommandHandler.cs" />
-    <Compile Include="Infrastructure\Database\DbConnectionScope.cs" />
-    <Compile Include="Infrastructure\Database\IConnectionStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\Authentication\Read\" />
+    <ProjectReference Include="..\Witf.Backend.Api\Witf.Backend.Api.csproj">
+      <Project>{7a0d1d46-9535-4b91-b108-429046dedec1}</Project>
+      <Name>Witf.Backend.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Witf.Backend\Witf.Backend.csproj">
+      <Project>{5BC39C80-C679-4674-898A-EEDED1EA8AC0}</Project>
+      <Name>Witf.Backend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

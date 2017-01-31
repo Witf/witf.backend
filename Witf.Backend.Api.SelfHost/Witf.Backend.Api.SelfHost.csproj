@@ -85,18 +85,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppConfigSettingsInstaller.cs" />
+    <Compile Include="SettingsInstaller.cs" />
+    <Compile Include="ConnectionStrings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Witf.Backend.Api\Witf.Backend.Api.csproj">
       <Project>{7a0d1d46-9535-4b91-b108-429046dedec1}</Project>
       <Name>Witf.Backend.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Witf.Backend\Witf.Backend.csproj">
+      <Project>{5BC39C80-C679-4674-898A-EEDED1EA8AC0}</Project>
+      <Name>Witf.Backend</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

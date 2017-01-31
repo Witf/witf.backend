@@ -3,10 +3,11 @@ using Castle.Components.DictionaryAdapter;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Witf.Backend.Infrastructure.Database;
 
 namespace Witf.Backend.Api.SelfHost
 {
-    public class AppConfigSettingsInstaller : IWindsorInstaller
+    public class SettingsInstaller : IWindsorInstaller
     {
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
@@ -15,6 +16,8 @@ namespace Witf.Backend.Api.SelfHost
 
             container.Register(Types.FromAssemblyContaining<IProxySettings>().Where(t => t.Name.EndsWith("Settings") && t.IsInterface)
                     .Configure(component => component.UsingFactoryMethod((kernel, model, creationContext) => dictionaryAdapterFactory.GetAdapter(creationContext.RequestedType, ConfigurationManager.AppSettings))));
+
+            container.Register(Component.For<IConnectionStrings>().ImplementedBy<ConnectionStrings>());
         }
 
     }
