@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Witf.Backend.Api.Controllers
@@ -11,9 +8,10 @@ namespace Witf.Backend.Api.Controllers
     {
         [HttpGet]
         [Route("api/ping/")]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<string>> Get()
         {
-            return new string[] { "ok", "ok" };
+            await Task.Delay(10);
+            return new[] { "ok", "ok" };
         }
     }
 }

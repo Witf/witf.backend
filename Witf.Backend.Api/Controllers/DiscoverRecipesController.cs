@@ -29,8 +29,7 @@ namespace Witf.Backend.Api.Controllers
                 response.Content = new StringContent(result, Encoding.UTF8, "application/json");
 
                 return ResponseMessage(response);
-            };
-
+            }
         }
 
     }

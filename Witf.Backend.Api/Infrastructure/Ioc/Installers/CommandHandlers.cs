@@ -1,14 +1,12 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Witf.Backend.Domain.Authentication;
 using Witf.Backend.Domain.Authentication.Write;
-using Witf.Backend.Infrastructure;
 using Witf.Backend.Infrastructure.Commands;
 
-namespace Witf.Backend.Api.Infrastructure.Ioc
+namespace Witf.Backend.Api.Infrastructure.Ioc.Installers
 {
-    public class InstallCommandHandlers : IWindsorInstaller
+    public class CommandHandlers : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
