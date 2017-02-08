@@ -11,7 +11,7 @@ namespace Witf.Backend.Api.Controllers
         public async Task<IEnumerable<string>> Get()
         {
             await Task.Delay(10);
-            return new[] { "ok", "ok" };
+            return new[] { "ok123", "ok456" };
         }
     }
 }
