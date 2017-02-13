@@ -1,4 +1,4 @@
-param([switch]$drop, [switch]$integrationTest)
+param([switch]$drop, [switch]$integrationTest, $connectionstring)
 
 if ($integrationTest) 
 {
@@ -15,10 +15,14 @@ $dbName = $m.Groups['db'].Value
 pushd
 set-location Witf.Backend\Database
 
-if ($drop) {
-    & '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=server=(local);database=$dbName;Trusted_Connection=true" '--drop' '--ni'
+if (-not $connectionstring) {
+    $connectionstring = "server=(local);database=$dbName;Trusted_Connection=true";
 }
 
-& '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=server=(local);database=$dbName;Trusted_Connection=true" '-env=LOCAL' '/vf=..\..\Witf.Backend.Api\bin\Debug\Witf.Backend.Api.dll' '--ct=3600' '--ni'
+if ($drop) {
+    & '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '--drop' '--ni'
+}
+
+& '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '-env=LOCAL' '/vf=..\..\Witf.Backend.Api\bin\Debug\Witf.Backend.Api.dll' '--ct=3600' '--ni'
 
 popd
