@@ -1,4 +1,4 @@
-param([switch]$drop, [switch]$integrationTest, $connectionstring)
+param([switch]$drop, [switch]$integrationTest, $connectionstring, $dbFileLocation)
 
 if (-not $connectionstring) {
 
@@ -18,7 +18,12 @@ if (-not $connectionstring) {
 }
 
 pushd
-set-location Witf.Backend\Database
+
+if (-not $dbFileLocation) {
+    $dbFileLocation = "Witf.Backend\Database"
+}
+
+set-location $dbFileLocation
 
 if ($drop) {
     & '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '--drop' '--ni'
