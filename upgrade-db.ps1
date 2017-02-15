@@ -1,4 +1,4 @@
-param([switch]$drop, [switch]$integrationTest, $connectionstring, $dbFileLocation)
+param([switch]$drop, [switch]$integrationTest, $connectionstring, $dbFileLocation, $vf)
 
 if (-not $connectionstring) {
 
@@ -17,18 +17,21 @@ if (-not $connectionstring) {
     $connectionstring = "server=(local);database=$dbName;Trusted_Connection=true";
 }
 
-pushd
-
 if (-not $dbFileLocation) {
     $dbFileLocation = "Witf.Backend\Database"
 }
 
+if (-not $vf) {
+    $vf = "..\..\Witf.Backend.Api\bin\Debug\Witf.Backend.Api.dll"
+}
+
+pushd
 set-location $dbFileLocation
 
 if ($drop) {
     & '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '--drop' '--ni'
 }
 
-& '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '-env=LOCAL' '/vf=..\..\Witf.Backend.Api\bin\Debug\Witf.Backend.Api.dll' '--ct=3600' '--ni'
+& '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '-env=LOCAL' "/vf=$vf" '--ct=3600' '--ni'
 
 popd
