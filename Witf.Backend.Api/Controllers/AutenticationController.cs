@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Witf.Backend.Api.Contracts;
-using Witf.Backend.Domain.Authentication;
 using Witf.Backend.Domain.Authentication.Write;
-using Witf.Backend.Infrastructure;
 using Witf.Backend.Infrastructure.Commands;
 
 namespace Witf.Backend.Api.Controllers

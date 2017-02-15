@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AutenticationController.cs" />
     <Compile Include="Controllers\DiscoverRecipesController.cs" />
     <Compile Include="Controllers\PingController.cs" />
+    <Compile Include="Infrastructure\ConnectionStrings.cs" />
     <Compile Include="Infrastructure\Ioc\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Ioc\Installers\CommandHandlers.cs" />
     <Compile Include="Infrastructure\Ioc\Installers\CommandInfrastructure.cs" />

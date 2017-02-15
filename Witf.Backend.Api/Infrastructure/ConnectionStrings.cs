@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using Witf.Backend.Infrastructure.Database;
 
-namespace Witf.Backend.Api.SelfHost
+namespace Witf.Backend.Api.Infrastructure
 {
     public class ConnectionStrings : IConnectionStrings
     {

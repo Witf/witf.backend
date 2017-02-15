@@ -16,7 +16,7 @@ namespace Witf.Backend.Api.SelfHost
             // Start OWIN host 
             var start = WebApp.Start<StartupForSelfhostBecauseReusingStartupInApiFailed>(baseAddress);
 
-            Console.WriteLine("Self host is up, press enter to quit..");
+            Console.WriteLine($"Self host is up on: {baseAddress}, press enter to quit..");
             Console.ReadLine();
             start.Dispose();
         }
