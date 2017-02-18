@@ -2,6 +2,7 @@
 using Microsoft.Owin;
 using Owin;
 using Witf.Backend.Api;
+using Witf.Backend.Api.Infrastructure.WebApi;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace Witf.Backend.Api
@@ -14,6 +15,7 @@ namespace Witf.Backend.Api
 
             WebApiConfig.Register(httpConfiguration);
 
+            app.UseAuth0Authentication();
             app.UseWebApi(httpConfiguration);
 
         }
