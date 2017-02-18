@@ -1,4 +1,4 @@
-param([switch]$drop, [switch]$integrationTest, $connectionstring, $dbFileLocation, $vf)
+param([switch]$drop, [switch]$integrationTest, $connectionstring, $dbFileLocation, $vf, [switch]$donotcreatedatabase)
 
 if (-not $connectionstring) {
 
@@ -28,10 +28,18 @@ if (-not $vf) {
 pushd
 set-location $dbFileLocation
 
+if ($donotcreatedatabase) {
+    $donotcreate = '--donotcreatedatabase'
+} else {
+    $donotcreate = ''    
+}
+
+
+
 if ($drop) {
     & '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '--drop' '--ni'
 }
 
-& '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '-env=LOCAL' "/vf=$vf" '--ct=3600' '--ni'
+& '..\..\packages\roundhouse.0.8.6\bin\rh.exe' "-c=$connectionstring" '-env=LOCAL' "/vf=$vf" '--ct=3600' '--ni' $donotcreate
 
 popd
